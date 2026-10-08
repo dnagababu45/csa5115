@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char text[] = "HELLO";
+    char key[] = "KEY";
+    char cipher[50];
+    int i, keyLen;
+
+    keyLen = strlen(key);
+
+    for(i = 0; text[i] != '\0'; i++)
+    {
+        cipher[i] = ((text[i] - 'A') +
+                     (key[i % keyLen] - 'A')) % 26 + 'A';
+    }
+
+    cipher[i] = '\0';
+
+    printf("Plaintext : %s\n", text);
+    printf("Key       : %s\n", key);
+    printf("Ciphertext: %s\n", cipher);
+
+    return 0;
+}

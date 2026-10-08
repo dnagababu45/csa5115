@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int main()
+{
+    char cipher[] = "B";
+    int a = 3;
+    int b = 15;
+    int a_inv = 9;
+    int i, c, p;
+
+    printf("Ciphertext : %s\n", cipher);
+
+    for(i = 0; cipher[i] != '\0'; i++)
+    {
+        c = cipher[i] - 'A';
+
+        p = (a_inv * (c - b + 26)) % 26;
+
+        cipher[i] = p + 'A';
+    }
+
+    printf("Plaintext   : %s\n", cipher);
+
+    return 0;
+}

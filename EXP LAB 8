@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char plain[] = "HELLO";
+    char key[] = "CIPHER";
+    char cipher[27];
+    int used[26] = {0};
+    int i, j = 0;
+
+    /* Add keyword letters */
+    for(i = 0; key[i] != '\0'; i++)
+    {
+        int x = key[i] - 'A';
+
+        if(used[x] == 0)
+        {
+            cipher[j++] = key[i];
+            used[x] = 1;
+        }
+    }
+
+    /* Add remaining alphabet letters */
+    for(i = 0; i < 26; i++)
+    {
+        if(used[i] == 0)
+        {
+            cipher[j++] = 'A' + i;
+            used[i] = 1;
+        }
+    }
+
+    cipher[26] = '\0';
+
+    printf("Plain alphabet : ABCDEFGHIJKLMNOPQRSTUVWXYZ\n");
+    printf("Cipher alphabet: %s\n", cipher);
+
+    printf("Plaintext : %s\n", plain);
+
+    printf("Ciphertext: ");
+
+    for(i = 0; plain[i] != '\0'; i++)
+    {
+        printf("%c", cipher[plain[i] - 'A']);
+    }
+
+    return 0;
+}

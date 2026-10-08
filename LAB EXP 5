@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+int main()
+{
+    char text[] = "HELLO";
+    int a = 5;
+    int b = 8;
+    int i, p, c;
+
+    printf("Plaintext : %s\n", text);
+
+    for(i = 0; text[i] != '\0'; i++)
+    {
+        p = text[i] - 'A';
+        c = (a * p + b) % 26;
+
+        text[i] = c + 'A';
+    }
+
+    printf("Ciphertext: %s\n", text);
+
+    return 0;
+}

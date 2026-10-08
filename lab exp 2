@@ -1,0 +1,19 @@
+#include <stdio.h>
+
+int main()
+{
+    char plain[] = "HELLO";
+    char key[] = "QWERTYUIOPASDFGHJKLZXCVBNM";
+    int i;
+
+    for(i = 0; plain[i] != '\0'; i++)
+    {
+        if(plain[i] >= 'A' && plain[i] <= 'Z')
+            plain[i] = key[plain[i] - 'A'];
+    }
+
+    printf("Plaintext : HELLO\n");
+    printf("Ciphertext: %s\n", plain);
+
+    return 0;
+}

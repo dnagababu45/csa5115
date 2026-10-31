@@ -1,16 +1,31 @@
 #include <stdio.h>
-#include <math.h>
+#include <string.h>
 
 int main()
 {
-    double keys = 1;
+    char c[100];
+    char p[100];
+    int freq[26]={0};
+    int i,j,k;
 
-    for(int i = 1; i <= 25; i++)
-        keys *= i;
+    printf("Enter ciphertext: ");
+    scanf("%99s",c);
 
-    printf("Total possible keys = 25! ");
-    printf("\nApproximate power of 2 = 2^84");
+    for(i=0;c[i];i++)
+        freq[c[i]-'a']++;
 
-    printf("\nEffectively unique keys are approximately 2^?");
+    for(k=0;k<26;k++)
+    {
+        for(i=0;c[i];i++)
+        {
+            j=(c[i]-'a'-k+26)%26;
+            p[i]=j+'a';
+        }
+
+        p[i]='\0';
+
+        printf("Key %d: %s\n",k,p);
+    }
+
     return 0;
 }

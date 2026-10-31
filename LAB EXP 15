@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char c[100];
+    char p[100];
+    int freq[26]={0};
+    int i,j,k;
+
+    printf("Enter ciphertext: ");
+    scanf("%99s",c);
+
+    for(i=0;c[i];i++)
+        freq[c[i]-'a']++;
+
+    for(k=0;k<26;k++)
+    {
+        for(i=0;c[i];i++)
+        {
+            j=(c[i]-'a'-k+26)%26;
+            p[i]=j+'a';
+        }
+
+        p[i]='\0';
+
+        printf("Key %d: %s\n",k,p);
+    }
+
+    return 0;
+}

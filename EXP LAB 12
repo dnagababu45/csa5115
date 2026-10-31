@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char p[] = "meet me at the usual place at ten rather than eight oclock";
+    char c[100];
+    int i, a, b, x, y;
+
+    int k[2][2] = {{9,4},{5,7}};
+    int d[2][2] = {{15,20},{15,3}};
+
+    char s[100];
+    int n = 0;
+
+    for(i=0; p[i]; i++)
+        if(p[i] >= 'a' && p[i] <= 'z')
+            s[n++] = p[i] - 'a';
+
+    if(n % 2) s[n++] = 'x';
+
+    for(i=0; i<n; i+=2)
+    {
+        a=s[i]; b=s[i+1];
+        c[i]=(k[0][0]*a+k[0][1]*b)%26;
+        c[i+1]=(k[1][0]*a+k[1][1]*b)%26;
+        c[i]+='a';
+        c[i+1]+='a';
+    }
+    c[n]='\0';
+
+    printf("Encrypted: %s\n",c);
+
+    printf("Decrypted: ");
+    for(i=0; i<n; i+=2)
+    {
+        a=c[i]-'a'; b=c[i+1]-'a';
+        x=(d[0][0]*a+d[0][1]*b)%26;
+        y=(d[1][0]*a+d[1][1]*b)%26;
+        printf("%c%c",x+'a',y+'a');
+    }
+
+    return 0;
+}

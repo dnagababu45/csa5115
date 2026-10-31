@@ -1,0 +1,16 @@
+#include <stdio.h>
+#include <math.h>
+
+int main()
+{
+    double keys = 1;
+
+    for(int i = 1; i <= 25; i++)
+        keys *= i;
+
+    printf("Total possible keys = 25! ");
+    printf("\nApproximate power of 2 = 2^84");
+
+    printf("\nEffectively unique keys are approximately 2^?");
+    return 0;
+}
